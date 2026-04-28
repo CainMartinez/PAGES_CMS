@@ -12,6 +12,7 @@ coverImage: /assets/images/hilos.jpg
 author:
   name: Cain Martinez
   picture: /assets/images/logo-1.png
+files: /assets/files/prevencion-de-riesgos-laborales.pdf
 ---
 # Noticia bomba
 
