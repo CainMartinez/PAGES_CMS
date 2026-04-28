@@ -104,6 +104,6 @@ content:
           
       - name: files
         label: Archivo
-        type: files
+        type: file
         options:
           media: files
