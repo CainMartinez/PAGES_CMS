@@ -13,4 +13,4 @@ author:
   name: Cain
   picture: /assets/images/deco-addict.png
 ---
-Test 2
+Test 2.
