@@ -1,0 +1,5 @@
+{
+  "buildCommand": "bundle exec jekyll build --baseurl ''",
+  "outputDirectory": "_site",
+  "installCommand": "bundle install"
+}
