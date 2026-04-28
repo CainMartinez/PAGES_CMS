@@ -1,6 +1,3 @@
-# ─────────────────────────────────────────────
-# MEDIA
-# ─────────────────────────────────────────────
 media:
   - name: images
     label: Imágenes
@@ -15,9 +12,6 @@ media:
     categories: [document]
     rename: safe
 
-# ─────────────────────────────────────────────
-# SETTINGS
-# ─────────────────────────────────────────────
 settings:
   content:
     merge: true
@@ -29,11 +23,7 @@ settings:
       delete: "docs(delete): {filename} (via Pages CMS)"
       rename: "docs(rename): {oldFilename} → {newFilename} (via Pages CMS)"
 
-# ─────────────────────────────────────────────
-# CONTENT
-# ─────────────────────────────────────────────
 content:
-  # ── Artículos / Posts ──────────────────────
   - name: posts
     label: Artículos
     type: collection
