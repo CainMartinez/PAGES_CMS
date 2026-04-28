@@ -6,6 +6,9 @@
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if site.baseurl and site.baseurl != '' %}
+  <script>window.__baseurl = '{{ site.baseurl }}';</script>
+  {% endif %}
 </head>
 <body>
 
@@ -25,6 +28,17 @@
       {% if site.description %}<span>{{ site.description }}</span>{% endif %}
     </div>
   </footer>
+
+  <script>
+    if (window.__baseurl) {
+      document.querySelectorAll('img').forEach(function(img) {
+        var src = img.getAttribute('src');
+        if (src && src.charAt(0) === '/' && src.indexOf(window.__baseurl) !== 0) {
+          img.src = window.__baseurl + src;
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
