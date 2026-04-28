@@ -1,10 +1,6 @@
 ---
 layout: home
-title: Documentación
+title: Inicio
 ---
 
-## Posts
-
-{% for doc in site.docs %}
-- [{{ doc.title }}]({{ doc.url }})
-{% endfor %}
+# Accede a la documentación en el menú superior
