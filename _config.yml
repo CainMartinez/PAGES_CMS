@@ -1,6 +1,7 @@
 title: Documentación
 description: Base de conocimiento del equipo
-theme: minima
+baseurl: /PAGES_CMS
+url: https://cainmartinez.github.io
 
 # Solo el título del sitio aparece en el header (sin links de nav extra)
 header_pages: []
