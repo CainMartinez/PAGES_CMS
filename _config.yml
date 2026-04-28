@@ -1,0 +1,14 @@
+title: PAGES CMS Docs
+theme: minima
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:name/
+
+defaults:
+  - scope:
+      path: docs
+      type: docs
+    values:
+      layout: default
