@@ -5,12 +5,12 @@ media:
     output: /assets/images
     categories: [image]
     rename: safe
-  - name: files
-    label: Archivos
-    input: assets/files
-    output: /assets/files
-    categories: [document]
-    rename: safe
+ #- name: files
+  # label: Archivos
+  # input: assets/files
+  # output: /assets/files
+  # categories: [document]
+  # rename: safe
 
 settings:
   content:
