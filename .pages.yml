@@ -81,7 +81,6 @@ content:
         type: image
         options:
           media: images
-          path: public/assets/images
           rename: safe
 
       - name: author
