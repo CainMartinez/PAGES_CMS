@@ -107,32 +107,6 @@ content:
             options:
               media: images
 
-      - name: ogImage
-        label: Imagen compartir (redes sociales)
-        type: object
-        fields:
-          - name: url
-            label: URL
-            type: image
-            options:
-              media: images
-
-      - name: body
-        label: Contenido
-        type: rich-text
-        options:
-          media: images
-
-  # ── Página "Acerca de" ─────────────────────
-  - name: about
-    label: Acerca de
-    type: file
-    path: docs/about.md
-    fields:
-      - name: title
-        label: Título
-        type: string
-
       - name: body
         label: Contenido
         type: rich-text

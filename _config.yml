@@ -1,5 +1,9 @@
 title: Documentación
+description: Base de conocimiento del equipo
 theme: minima
+
+# Solo el título del sitio aparece en el header (sin links de nav extra)
+header_pages: []
 
 collections:
   docs:
@@ -7,8 +11,8 @@ collections:
     permalink: /docs/:name/
 
 defaults:
+  # Todos los archivos dentro de docs/ usan el layout doc
   - scope:
-      path: docs
-      type: docs
+      path: "docs"
     values:
-      layout: default
+      layout: doc

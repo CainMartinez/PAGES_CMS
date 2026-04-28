@@ -1,0 +1,80 @@
+---
+layout: default
+---
+
+<article class="doc-article">
+
+  {% if page.coverImage %}
+  <div class="cover-image">
+    <img src="{{ page.coverImage | relative_url }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
+  <div class="doc-container">
+
+    <header class="doc-header">
+
+      <div class="doc-meta-top">
+        {% if page.featured %}<span class="badge badge-featured">★ Destacado</span>{% endif %}
+        {% if page.status %}
+        <span class="badge badge-{{ page.status }}">
+          {% if page.status == 'draft' %}Borrador
+          {% elsif page.status == 'review' %}En revisión
+          {% elsif page.status == 'published' %}Publicado
+          {% else %}{{ page.status }}{% endif %}
+        </span>
+        {% endif %}
+        {% if page.tags %}
+          {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+        {% endif %}
+      </div>
+
+      <h1 class="doc-title">{{ page.title }}</h1>
+
+      {% if page.excerpt %}
+      <p class="doc-excerpt">{{ page.excerpt }}</p>
+      {% endif %}
+
+      <div class="author-card">
+        {% if page.author.picture %}
+        <img src="{{ page.author.picture | relative_url }}" alt="{{ page.author.name }}" class="author-avatar">
+        {% elsif page.author.name %}
+        <div class="author-avatar author-avatar-placeholder">{{ page.author.name | slice: 0 | upcase }}</div>
+        {% else %}
+        <div class="author-avatar author-avatar-placeholder">?</div>
+        {% endif %}
+        <div class="author-info">
+          {% if page.author.name %}
+          <strong class="author-name">{{ page.author.name }}</strong>
+          {% else %}
+          <strong class="author-name">Anónimo</strong>
+          {% endif %}
+          {% if page.date %}
+          <time class="doc-date" datetime="{{ page.date | date_to_xmlschema }}">
+            Publicado el {{ page.date | date: "%d de %B de %Y" }}
+          </time>
+          {% endif %}
+        </div>
+      </div>
+
+    </header>
+
+    <div class="doc-body">
+      {{ content }}
+    </div>
+
+    <footer class="doc-footer">
+      {% if page.modDate %}
+      <p class="mod-date">
+        Última modificación:
+        <time datetime="{{ page.modDate }}">{{ page.modDate | date: "%d de %B de %Y" }}</time>
+      </p>
+      {% else %}
+      <p class="mod-date"></p>
+      {% endif %}
+      <a href="{{ '/' | relative_url }}" class="back-link">← Volver al inicio</a>
+    </footer>
+
+  </div>
+
+</article>

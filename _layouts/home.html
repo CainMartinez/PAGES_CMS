@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<div class="home-page">
+
+  <div class="home-hero">
+    <h1>{{ site.title }}</h1>
+    {% if site.description %}
+    <p>{{ site.description }}</p>
+    {% endif %}
+  </div>
+
+  {% assign docs = site.pages
+    | where_exp: "item", "item.path contains 'docs/'"
+    | sort: "date"
+    | reverse %}
+
+  {% if docs.size > 0 %}
+  <div class="posts-grid">
+    {% for doc in docs %}
+    <article class="post-card{% if doc.featured %} post-card--featured{% endif %}">
+
+      {% if doc.coverImage %}
+      <a href="{{ doc.url | relative_url }}" class="post-card-cover">
+        <img src="{{ doc.coverImage | relative_url }}" alt="{{ doc.title }}">
+      </a>
+      {% else %}
+      <a href="{{ doc.url | relative_url }}" class="post-card-cover post-card-cover--placeholder">
+        <span>{{ doc.title | slice: 0 }}</span>
+      </a>
+      {% endif %}
+
+      <div class="post-card-body">
+
+        <div class="post-card-badges">
+          {% if doc.featured %}<span class="badge badge-featured">★ Destacado</span>{% endif %}
+          {% if doc.status %}
+          <span class="badge badge-{{ doc.status }}">
+            {% if doc.status == 'draft' %}Borrador
+            {% elsif doc.status == 'review' %}En revisión
+            {% elsif doc.status == 'published' %}Publicado
+            {% else %}{{ doc.status }}{% endif %}
+          </span>
+          {% endif %}
+          {% if doc.tags %}
+            {% for tag in doc.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+          {% endif %}
+        </div>
+
+        <h2 class="post-card-title">
+          <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+        </h2>
+
+        {% if doc.excerpt %}
+        <p class="post-card-excerpt">{{ doc.excerpt }}</p>
+        {% endif %}
+
+        <div class="post-card-footer">
+          {% if doc.author %}
+          <div class="author-mini">
+            {% if doc.author.picture %}
+            <img src="{{ doc.author.picture | relative_url }}" alt="{{ doc.author.name }}">
+            {% endif %}
+            <span>{{ doc.author.name }}</span>
+          </div>
+          {% endif %}
+          {% if doc.date %}
+          <time datetime="{{ doc.date | date_to_xmlschema }}">{{ doc.date | date: "%d/%m/%Y" }}</time>
+          {% endif %}
+        </div>
+
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <p class="no-posts">Aún no hay artículos publicados.</p>
+  {% endif %}
+
+</div>
