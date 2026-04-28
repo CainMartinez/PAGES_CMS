@@ -1,11 +1,140 @@
-media: media
+# ─────────────────────────────────────────────
+# MEDIA
+# ─────────────────────────────────────────────
+media:
+  - name: images
+    label: Imágenes
+    input: public/assets/images
+    output: /assets/images
+    categories: [image]
+    rename: safe
+  - name: files
+    label: Archivos
+    input: public/assets/files
+    output: /assets/files
+    categories: [document]
+    rename: safe
+
+# ─────────────────────────────────────────────
+# SETTINGS
+# ─────────────────────────────────────────────
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "docs(create): {filename} (via Pages CMS)"
+      update: "docs(update): {filename} (via Pages CMS)"
+      delete: "docs(delete): {filename} (via Pages CMS)"
+      rename: "docs(rename): {oldFilename} → {newFilename} (via Pages CMS)"
+
+# ─────────────────────────────────────────────
+# CONTENT
+# ─────────────────────────────────────────────
 content:
-  - name: pages
-    label: Pages
+  # ── Artículos / Posts ──────────────────────
+  - name: posts
+    label: Artículos
     type: collection
     path: docs
+    view:
+      fields: [coverImage, title, date, status, featured]
+      sort: date
     fields:
       - name: title
+        label: Título
         type: string
+        required: true
+
+      - name: date
+        label: Fecha de publicación
+        type: date
+        default: ""
+        options:
+          format: "yyyy-MM-dd"
+
+      - name: modDate
+        label: Última modificación
+        type: date
+        default: ""
+        options:
+          format: "yyyy-MM-dd"
+
+      - name: status
+        label: Estado
+        type: select
+        options:
+          values:
+            - name: draft
+              label: Borrador
+            - name: review
+              label: En revisión
+            - name: published
+              label: Publicado
+
+      - name: featured
+        label: Destacado
+        type: boolean
+
+      - name: tags
+        label: Etiquetas
+        type: string
+        list: true
+
+      - name: excerpt
+        label: Resumen
+        type: text
+
+      - name: coverImage
+        label: Imagen de portada
+        type: image
+        options:
+          media: images
+          path: public/assets/images
+          rename: safe
+
+      - name: author
+        label: Autor
+        type: object
+        fields:
+          - name: name
+            label: Nombre
+            type: string
+          - name: picture
+            label: Avatar
+            type: image
+            options:
+              media: images
+
+      - name: ogImage
+        label: Imagen compartir (redes sociales)
+        type: object
+        fields:
+          - name: url
+            label: URL
+            type: image
+            options:
+              media: images
+
       - name: body
+        label: Contenido
         type: rich-text
+        options:
+          media: images
+
+  # ── Página "Acerca de" ─────────────────────
+  - name: about
+    label: Acerca de
+    type: file
+    path: docs/about.md
+    fields:
+      - name: title
+        label: Título
+        type: string
+
+      - name: body
+        label: Contenido
+        type: rich-text
+        options:
+          media: images
