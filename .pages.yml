@@ -4,13 +4,13 @@
 media:
   - name: images
     label: Imágenes
-    input: public/assets/images
+    input: assets/images
     output: /assets/images
     categories: [image]
     rename: safe
   - name: files
     label: Archivos
-    input: public/assets/files
+    input: assets/files
     output: /assets/files
     categories: [document]
     rename: safe
